@@ -21,7 +21,7 @@ with col1:
 
 with col2:
     am_cisco = st.text_input("AM de Cisco")
-    resp_best = st.text_input("Responsable de Preventa")
+    resp_best = st.text_input("Responsable de Best")
     fecha = st.date_input("Fecha de evaluación", date.today())
     vertical = st.selectbox("Vertical de negocio", 
                             ["Finanzas", "Salud", "Retail", "Manufactura", "Educación", "Gobierno", "Tecnología", "Otro"])
