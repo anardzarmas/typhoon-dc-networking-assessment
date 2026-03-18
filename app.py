@@ -1,6 +1,7 @@
 import streamlit as st
 from fpdf import FPDF
 from datetime import date
+import os  #
 
 # Configuración de la página
 st.set_page_config(page_title="Datacenter Networking Assessment", layout="wide")
@@ -236,7 +237,30 @@ def crear_pdf(empresa, contacto, correo, puesto, am_cisco, resp_best, fecha, ver
     def clean_txt(texto):
         if not texto: return "N/A"
         return str(texto).encode('latin-1', 'replace').decode('latin-1')
+
+# ---------------------------------------------------------
+    # INSERCIÓN DE LOGOS (BEST/TYPHOON Y CISCO)
+    # ---------------------------------------------------------
+    # NOTA: Si tu archivo se llama 'logo_best.jpg' en lugar de 'logo_typhoon.jpg', 
+    # cámbialo en la línea de abajo.
+    
+    ruta_logo_best = 'logo_typhoon.jpg'
+    ruta_logo_cisco = 'logo_cisco.jpg'
+
+    if os.path.exists(ruta_logo_best):
+        # (archivo, coordenada X, coordenada Y, ancho en mm)
+        pdf.image(ruta_logo_best, 10, 8, 40) 
+    else:
+        st.error(f"⚠️ No se encontró el archivo: {ruta_logo_best}")
+
+    if os.path.exists(ruta_logo_cisco):
+        pdf.image(ruta_logo_cisco, 160, 8, 30)
+    else:
+        st.error(f"⚠️ No se encontró el archivo: {ruta_logo_cisco}")
         
+    pdf.ln(25) # Salto de línea de 25mm para evitar que los logos tapen los títulos
+
+    
     # Cabecera
     pdf.set_font("Arial", 'B', 16)
     pdf.set_text_color(0, 51, 102)
