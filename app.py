@@ -280,7 +280,7 @@ def crear_pdf(empresa, contacto, correo, puesto, am_cisco, resp_best, fecha, ver
         ("Empresa:", empresa, "Vertical:", vertical),
         ("Contacto:", contacto, "Fecha:", fecha),
         ("Correo:", correo, "AM Cisco:", am_cisco),
-        ("Puesto:", puesto, "Preventa:", resp_best)
+        ("Puesto:", puesto, "Resp. Best:", resp_best)
     ]
     for eti1, val1, eti2, val2 in datos:
         pdf.cell(30, 6, clean_txt(eti1), border=0)
